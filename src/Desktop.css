@@ -2,20 +2,22 @@
 
 #desktop {
     background: teal;
-    width: 100%;
-    height: 100vh;
+    width: calc(100vw); /* Adjusted width to accommodate the border */
+    height: calc(100vh - 20px); /* Adjusted height to accommodate the border */
     overflow: hidden;
+    border: 10px solid transparent; /* Invisible border */
+    padding: 10px; /* Adjust padding to match border width */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
 }
 
+
 .desktop-icons {
-    display: grid;
-    grid-template-columns: 50px auto 50px auto 50px; /* 5 columns with specified widths */
-    grid-template-rows: repeat(3, auto); /* Define grid rows */
-    grid-gap: 10px;
+    position: relative;
     padding: 20px; /* Maintain the padding */
 }
 
 .desktop-icon {
+    position: absolute;
     display: flex;
     flex-direction: column;
     align-items: center; /* Align both icon and text to the center */
@@ -40,40 +42,4 @@
     font-size: 12px; /* Adjust font size */
     word-wrap: break-word; /* Allow long text to wrap onto multiple lines */
     line-height: 1.2; /* Set the line height */
-}
-
-/* Update icon placement */
-.desktop-icon:nth-child(1) {
-    grid-column: 1; /* Place the first icon in the first column */
-    grid-row: 1; /* Place the first icon in the first row */
-}
-
-.desktop-icon:nth-child(2) {
-    grid-column: 3; /* Place the second icon in the third column */
-    grid-row: 1; /* Place the second icon in the first row */
-}
-
-.desktop-icon:nth-child(3) {
-    grid-column: 5; /* Place the third icon in the fifth column */
-    grid-row: 1; /* Place the third icon in the first row */
-}
-
-.desktop-icon:nth-child(4) {
-    grid-column: 1; /* Place the fourth icon in the first column */
-    grid-row: 2; /* Place the fourth icon in the second row */
-}
-
-.desktop-icon:nth-child(5) {
-    grid-column: 3; /* Place the fifth icon in the third column */
-    grid-row: 2; /* Place the fifth icon in the second row */
-}
-
-.desktop-icon:nth-child(6) {
-    grid-column: 5; /* Place the sixth icon in the fifth column */
-    grid-row: 2; /* Place the sixth icon in the second row */
-}
-
-.desktop-icon:nth-child(7) {
-    grid-column: 5; /* Place the seventh icon in the fifth column */
-    grid-row: 3; /* Place the seventh icon in the third row */
 }
