@@ -1,0 +1,67 @@
+/* toolbar.css */
+
+#toolbar {
+    background: #c0c0c0;
+    height: 35px;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    border-top: 2px solid #fff;
+}
+
+.toolbar-start-menu {
+    float: left;
+}
+
+.start-button {
+    background: url(images/windows-0.png) no-repeat 2px center / 24px;
+    padding-left: 28px;
+    padding-right: 5px;
+    height: 29px;
+    margin: 2px 3px;
+    font-weight: bold;
+    border: 2px solid #7c7c7c;
+    border-top-color: #fff;
+    border-left-color: #fff;
+}
+
+.start-menu-title span {
+    transform: rotate(-90deg);
+    transform-origin: left 0;
+    position: absolute;
+    left: 10px;
+    bottom: -10px;
+}
+
+/* Remove Start Menu title */
+.start-menu-title {
+    display: none;
+}
+
+.toolbar-separator {
+    width: 2px;
+    height: 26px;
+    margin-top: 2px;
+    background: #797979;
+    float: left;
+    border-right: 1px solid #fff;
+}
+
+.toolbar-left {
+    float: left;
+    padding: 0 5px;
+}
+
+.toolbar-right {
+    float: right;
+    margin: 2px 3px;
+    height: 29px;
+    border: 2px solid #7c7c7c;
+    border-bottom-color: #fff;
+    border-right-color: #fff;
+}
+
+.time {
+    padding: 6px 10px;
+}
