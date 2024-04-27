@@ -1,6 +1,6 @@
-// Desktop.js
-import React, { useState } from 'react';
+import {useState} from "react";
 import './Desktop.css';
+
 import MyComputerIcon from './images/computer_explorer-5.png';
 import RecycleBinIcon from './images/recycle_bin_empty-4.png';
 import MyDocumentsIcon from './images/directory_open_file_mydocs-4.png';
@@ -9,29 +9,18 @@ import PortfolioIcon from './images/computer_explorer-5.png'; // Update with act
 import BlogIcon from './images/outlook_express-0.png';
 import ContactIcon from './images/msie2-2.png';
 
-// Define initial icon positions
-const initialIconPositions = {
-    'My Computer': { x: 0, y: 0 },
-    'Recycle Bin': { x: 0, y: 0 },
-    'My Documents': { x: 0, y: 0 },
-    'Network': { x: 0, y: 0 },
-    'Portfolio': { x: 0, y: 0 },
-    'Blog': { x: 0, y: 0 },
-    'Contact': { x: 0, y: 0 }
-};
-
 const Desktop = () => {
     // State to manage the currently selected icon
     const [selectedIcon, setSelectedIcon] = useState(null);
     // State to store the position of each desktop icon
     const [iconPositions, setIconPositions] = useState({
-        'My Computer': { x: 50, y: 50 },
-        'Recycle Bin': { x: 200, y: 50 },
-        'My Documents': { x: 350, y: 50 },
-        'Network': { x: 50, y: 150 },
-        'Portfolio': { x: 200, y: 150 },
-        'Blog': { x: 350, y: 150 },
-        'Contact': { x: 50, y: 250 }
+        'My Computer': { x: 0, y: 0 },
+        'Recycle Bin': { x: 5, y: 80 },
+        'My Documents': { x: -5, y: 160 },
+        'Network': { x: 0, y: 240 },
+        'Portfolio': { x: 690, y: 0 },
+        'Blog': { x: 770, y: 0 },
+        'Contact': { x: 1830, y: 690 }
     });
 
     // Handle icon click
@@ -47,7 +36,8 @@ const Desktop = () => {
     };
 
     // Function to handle icon drag start
-    const handleIconDragStart = (e, iconName) => { 
+    const handleIconDragStart = (e, iconName) => {
+        console.log('Drag start:', iconName);
         e.dataTransfer.setData('iconName', iconName);
     };
 
@@ -65,17 +55,47 @@ const Desktop = () => {
         let collisionDetected = false;
         Object.entries(iconPositions).forEach(([icon, position]) => {
             if (icon !== iconName && Math.abs(position.x - gridX) < gridSize && Math.abs(position.y - gridY) < gridSize) {
-                // Collision detected, adjust position
+                // Collision detected, set the flag and return
                 collisionDetected = true;
                 return;
             }
         });
 
-        // If collision detected, move the icon back to its original position
+        // If collision detected, find the nearest available position
         if (collisionDetected) {
+            let nearestPosition = { x: gridX, y: gridY };
+            let minDistance = Number.MAX_SAFE_INTEGER;
+            const possiblePositions = [
+                { x: gridX - gridSize, y: gridY - gridSize },
+                { x: gridX, y: gridY - gridSize },
+                { x: gridX + gridSize, y: gridY - gridSize },
+                { x: gridX - gridSize, y: gridY },
+                { x: gridX + gridSize, y: gridY },
+                { x: gridX - gridSize, y: gridY + gridSize },
+                { x: gridX, y: gridY + gridSize },
+                { x: gridX + gridSize, y: gridY + gridSize }
+            ];
+
+            possiblePositions.forEach((position) => {
+                let available = true;
+                Object.values(iconPositions).forEach((existingPosition) => {
+                    if (Math.abs(existingPosition.x - position.x) < gridSize && Math.abs(existingPosition.y - position.y) < gridSize) {
+                        available = false;
+                    }
+                });
+                if (available) {
+                    const distance = Math.sqrt(Math.pow(position.x - gridX, 2) + Math.pow(position.y - gridY, 2));
+                    if (distance < minDistance) {
+                        nearestPosition = position;
+                        minDistance = distance;
+                    }
+                }
+            });
+
+            // Update the icon position to the nearest available position
             setIconPositions(prevPositions => ({
                 ...prevPositions,
-                [iconName]: { x: initialIconPositions[iconName].x, y: initialIconPositions[iconName].y }
+                [iconName]: { x: nearestPosition.x, y: nearestPosition.y }
             }));
         } else {
             // No collision, update the icon position
@@ -86,12 +106,15 @@ const Desktop = () => {
         }
     };
 
+
+
 // Define gridSize in pixels (e.g., 50px)
     const gridSize = 80;
 
     // Function to handle drag over
     const handleDragOver = (e) => {
         e.preventDefault();
+        console.log('Drag over:', e.target);
     };
 
     return (
