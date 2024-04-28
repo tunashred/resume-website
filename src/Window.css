@@ -1,4 +1,8 @@
 /* Styles for the window */
+:root {
+    --button-face: #dfdfdf;
+}
+
 .window {
     border: 2px solid #fff;
     border-right-color: #7c7c7c;
@@ -10,155 +14,77 @@
     top: 25%;
     left: 25%;
     resize: both;
-    overflow: auto;
+    overflow: hidden; /* Hide the scrollbar initially */
+}
 
-    /* Window toolbar styles */
-    .window-toolbar {
-        background: #000080;
-        color: #fff;
-        padding: 4px;
-        font-weight: bold;
-    }
+/* Window toolbar styles */
+.window-toolbar {
+    background: #000080;
+    color: #fff;
+    padding: 4px;
+    font-weight: bold;
+}
 
-    /* Window buttons styles */
-    .window-buttons {
-        position: absolute;
-        right: 2px;
-        top: 2px;
+/* Window buttons styles */
+.window-buttons {
+    position: absolute;
+    right: 2px;
+    top: 2px;
 
-        /* Close and help button styles */
-        .window-button {
-            background: no-repeat center #ccc;
-            border: 2px solid #7c7c7c;
-            border-top-color: #fff;
-            border-left-color: #fff;
-            height: 17px;
-            width: 17px;
-            float: right;
-            margin-left: 2px;
+    /* Close and help button styles */
+    .window-button {
+        background: no-repeat center #ccc;
+        border: 2px solid #7c7c7c;
+        border-top-color: #fff;
+        border-left-color: #fff;
+        height: 17px;
+        width: 17px;
+        float: right;
+        margin-left: 2px;
 
-            /* Close button style */
-            &.close {
-                background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
-            }
-
-            /* Help button style */
-            &.help {
-                background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
-            }
+        /* Close button style */
+        &.close {
+            background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
         }
-    }
 
-    /* Window tabs styles */
-    .window-tabs {
-        overflow: hidden;
-        padding-top: 2px;
-
-        /* Tab button styles */
-        .tabs-button {
-            background: none;
-            border: none;
-            padding: 5px 8px;
-            float: left;
-            border-top: 1px solid #fff;
-            border-bottom: 1px solid #fff;
-            border-radius: 3px 3px 0 0;
-            border-right: 2px solid #666;
-            margin: 0;
-
-            /* First tab button style */
-            &:first-child {
-                border-left: 1px solid #fff;
-            }
-
-            /* Active tab button style */
-            &.active {
-                border-bottom: none;
-                padding-top: 7px;
-                margin-top: -2px;
-            }
-        }
-    }
-
-    /* Window content styles */
-    .window-content {
-        padding: 0; /* Remove padding to maximize content area */
-        height: calc(100% - 30px); /* Adjust the height of the content area */
-    }
-
-    /* Window wrapper styles */
-    .window-wrapper {
-        padding: 10px;
-
-        /* Fieldset styles */
-        fieldset {
-            border: 1px solid #7c7c7c;
-            padding: 10px;
-            position: relative;
-
-            /* Fieldset before styles */
-            &::before {
-                content: " ";
-                position: absolute;
-                z-index: -1;
-                bottom: -2px;
-                left: 0;
-                width: calc(100% + 1px);
-                height: calc(100% - 7px);
-                border: 1px solid #fff;
-            }
-
-            /* Legend styles */
-            legend {
-                padding: 0 3px;
-                background: #c0c0c0;
-            }
-
-            /* Select styles */
-            select {
-                width: 100%;
-                margin: 15px 0;
-
-                /* Option styles */
-                option {
-                    background: url(https://win98icons.alexmeub.com/icons/png/paint_file-1.png) no-repeat 2px 2px;
-                    background-size: auto 14px;
-                    padding: 2px 3px 0 18px;
-                    vertical-align: middle;
-                }
-
-                /* First option styles */
-                option:first-child {
-                    background-image: url(https://win98icons.alexmeub.com/icons/png/no2-1.png);
-                }
-            }
-
-            /* Paragraph styles */
-            p::first-letter {
-                text-decoration: underline;
-            }
-        }
-    }
-
-    /* Window actions styles */
-    .window-actions {
-        margin-top: 10px;
-        overflow: hidden;
-
-        /* Action button styles */
-        .window-action-button {
-            border: 1px solid #131313;
-            border-top-color: #fff;
-            border-left-color: #fff;
-            background: #c0c0c0;
-            width: 75px;
-            text-align: center;
-            padding: 5px 0;
-            float: right;
-            margin-left: 5px;
+        /* Help button style */
+        &.help {
+            background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
         }
     }
 }
+
+/* Window content styles */
+.window-content {
+    position: absolute;
+    top: 30px; /* Offset content by the toolbar height */
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow-y: scroll;
+    padding: 0; /* Remove padding to maximize content area */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE and Edge */
+}
+
+/* Overlapping custom scrollbar over the default one */
+.window-content::-webkit-scrollbar {
+    width: 16px; /* Adjust the scrollbar width as needed */
+    background: rgba(0, 0, 0, 0.1); /* Placeholder background color */
+}
+
+.window-content::-webkit-scrollbar-thumb {
+    background-color: var(--button-face);
+    border: 3px solid transparent; /* Adjust border size */
+    background-clip: content-box;
+    border-radius: 6px; /* Adjust border radius */
+}
+
+.window-content::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+/* Resize handle styles */
 .window-resize-handle {
     position: absolute;
     width: 10px;
@@ -169,6 +95,7 @@
     background-color: #000;
 }
 
+/* Iframe styles */
 .web-page-iframe {
     width: 100%;
     height: 100%;

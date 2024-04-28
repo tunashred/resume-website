@@ -56,7 +56,7 @@ const Window = ({ id, onClose }) => {
                 </div>
             </div>
             <div className="window-content">
-                <iframe src="https://example.com" title="Web Page" className="web-page-iframe"></iframe>
+                <iframe src="https://wikipedia.com" title="Web Page" className="web-page-iframe"></iframe>
             </div>
             <div className="window-resize-handle"></div>
         </div>
