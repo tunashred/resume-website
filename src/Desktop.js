@@ -1,5 +1,7 @@
 import {useState} from "react";
 import './Desktop.css';
+import Window from "./Window";
+import { useWindows } from './WindowManager';
 
 import MyComputerIcon from './images/computer_explorer-5.png';
 import RecycleBinIcon from './images/recycle_bin_empty-4.png';
@@ -25,11 +27,30 @@ const Desktop = () => {
         'Contact': { x: 1830, y: 690 }
     });
 
+    const { windows, openWindow, closeWindow } = useWindows();
+
     // Handle icon click
     const handleIconClick = (iconName, e) => {
         e.stopPropagation(); // Stop propagation to prevent deselection
         // Toggle selection
         setSelectedIcon(prevIcon => prevIcon === iconName ? null : iconName);
+    };
+
+    // Handle double click on icon to open a window
+    const handleIconDoubleClick = (iconName) => {
+        switch (iconName) {
+            case "Portfolio":
+                openWindow("PortfolioWindow");
+                break;
+            case "Blog":
+                openWindow("BlogWindow");
+                break;
+            case "Contact":
+                openWindow("ContactWindow");
+                break;
+            default:
+                break;
+        }
     };
 
     // Handle click outside of icons to deselect the icon
@@ -112,11 +133,13 @@ const Desktop = () => {
     };
 
     return (
+
         <div
             id="desktop"
             onClick={handleOutsideClick}
             onDrop={handleIconDrop}
             onDragOver={handleDragOver}
+            onDoubleClick={handleOutsideClick}
         >
             {/* Desktop icons */}
             <div className="desktop-icons">
@@ -168,6 +191,7 @@ const Desktop = () => {
                 <div
                     className={`desktop-icon ${selectedIcon === 'Portfolio' ? 'selected' : ''}`}
                     onClick={(e) => handleIconClick('Portfolio', e)}
+                    onDoubleClick={() => handleIconDoubleClick("Portfolio")}
                     draggable={true}
                     onDragStart={(e) => handleIconDragStart(e, 'Portfolio')}
                     style={{ left: iconPositions['Portfolio'].x, top: iconPositions['Portfolio'].y }}
@@ -179,6 +203,7 @@ const Desktop = () => {
                 <div
                     className={`desktop-icon ${selectedIcon === 'Blog' ? 'selected' : ''}`}
                     onClick={(e) => handleIconClick('Blog', e)}
+                    onDoubleClick={() => handleIconDoubleClick("Blog")}
                     draggable={true}
                     onDragStart={(e) => handleIconDragStart(e, 'Blog')}
                     style={{ left: iconPositions['Blog'].x, top: iconPositions['Blog'].y }}
@@ -190,6 +215,7 @@ const Desktop = () => {
                 <div
                     className={`desktop-icon ${selectedIcon === 'Contact' ? 'selected' : ''}`}
                     onClick={(e) => handleIconClick('Contact', e)}
+                    onDoubleClick={() => handleIconDoubleClick("Contact")}
                     draggable={true}
                     onDragStart={(e) => handleIconDragStart(e, 'Contact')}
                     style={{ left: iconPositions['Contact'].x, top: iconPositions['Contact'].y }}
@@ -198,6 +224,10 @@ const Desktop = () => {
                     <span>Contact</span>
                 </div>
             </div>
+            {/* Render windows */}
+            {windows.map(window => (
+                <Window key={window.id} id={window.id} onClose={closeWindow} />
+            ))}
         </div>
     );
 }
