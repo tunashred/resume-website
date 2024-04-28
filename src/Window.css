@@ -4,13 +4,13 @@
     border-right-color: #7c7c7c;
     border-bottom-color: #131313;
     background: #c0c0c0;
-    width: 90%;
-    max-width: 500px;
+    width: 500px; /* Set an initial width */
+    height: 300px; /* Set an initial height */
     position: fixed;
     top: 25%;
     left: 25%;
     resize: both;
-    overflow-x: auto;
+    overflow: auto;
 
     /* Window toolbar styles */
     .window-toolbar {
