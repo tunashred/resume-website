@@ -45,7 +45,9 @@ const Window = ({ id, onClose }) => {
     };
 
     return (
-        <div className="window" style={{ top: windowPosition.y, left: windowPosition.x, width: windowSize.width, height: windowSize.height }} onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
+        <div className="window"
+             style={{top: windowPosition.y, left: windowPosition.x, width: windowSize.width, height: windowSize.height}}
+             onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
             <div className="window-toolbar" onMouseDown={handleMouseDown}>
                 <span>Window Title</span>
                 <div className="window-buttons">
@@ -54,7 +56,7 @@ const Window = ({ id, onClose }) => {
                 </div>
             </div>
             <div className="window-content">
-                <p>This is the content of the window with id: {id}</p>
+                <iframe src="https://example.com" title="Web Page" className="web-page-iframe"></iframe>
             </div>
             <div className="window-resize-handle"></div>
         </div>
