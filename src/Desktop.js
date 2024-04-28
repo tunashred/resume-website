@@ -10,6 +10,8 @@ import BlogIcon from './images/outlook_express-0.png';
 import ContactIcon from './images/msie2-2.png';
 
 const Desktop = () => {
+    // Define gridSize in pixels (e.g., 50px)
+    const gridSize = 80;
     // State to manage the currently selected icon
     const [selectedIcon, setSelectedIcon] = useState(null);
     // State to store the position of each desktop icon
@@ -37,7 +39,6 @@ const Desktop = () => {
 
     // Function to handle icon drag start
     const handleIconDragStart = (e, iconName) => {
-        console.log('Drag start:', iconName);
         e.dataTransfer.setData('iconName', iconName);
     };
 
@@ -57,7 +58,6 @@ const Desktop = () => {
             if (icon !== iconName && Math.abs(position.x - gridX) < gridSize && Math.abs(position.y - gridY) < gridSize) {
                 // Collision detected, set the flag and return
                 collisionDetected = true;
-                return;
             }
         });
 
@@ -106,15 +106,9 @@ const Desktop = () => {
         }
     };
 
-
-
-// Define gridSize in pixels (e.g., 50px)
-    const gridSize = 80;
-
     // Function to handle drag over
     const handleDragOver = (e) => {
         e.preventDefault();
-        console.log('Drag over:', e.target);
     };
 
     return (
