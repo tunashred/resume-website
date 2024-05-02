@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import './Window.css';
 import Portfolio from "./Portfolio/Portfolio";
+import Blog from "./Blog/Blog";
+import Contact from "./Contact/Contact";
 
 const Window = ({ id, onClose, props }) => {
     const [isDragging, setIsDragging] = useState(false);
@@ -60,7 +62,9 @@ const Window = ({ id, onClose, props }) => {
                 </div>
             </div>
             <div className="window-content">
-                <Portfolio/>
+                {pageOpened === "Portfolio" && <Portfolio />}
+                {pageOpened === "Blog" && <Blog />}
+                {pageOpened === "Contact" && <Contact />}
             </div>
             <div className="window-resize-handle"></div>
         </div>
