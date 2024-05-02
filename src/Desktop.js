@@ -28,6 +28,7 @@ const Desktop = () => {
     });
 
     const { windows, openWindow, closeWindow } = useWindows();
+    const [openedWindow, setOpenedWindow] = useState("");
 
     // Handle icon click
     const handleIconClick = (iconName, e) => {
@@ -40,12 +41,15 @@ const Desktop = () => {
     const handleIconDoubleClick = (iconName) => {
         switch (iconName) {
             case "Portfolio":
+                setOpenedWindow("Portfolio");
                 openWindow("PortfolioWindow");
                 break;
             case "Blog":
+                setOpenedWindow("Blog");
                 openWindow("BlogWindow");
                 break;
             case "Contact":
+                setOpenedWindow("Contact");
                 openWindow("ContactWindow");
                 break;
             default:
@@ -226,7 +230,7 @@ const Desktop = () => {
             </div>
             {/* Render windows */}
             {windows.map(window => (
-                <Window key={window.id} id={window.id} onClose={closeWindow} />
+                <Window id={window.id} onClose={closeWindow} props = {openedWindow} />
             ))}
         </div>
     );

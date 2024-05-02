@@ -1,13 +1,17 @@
 import React, { useState } from 'react';
 import './Window.css';
+import Portfolio from "./Portfolio/Portfolio";
 
-const Window = ({ id, onClose }) => {
+const Window = ({ id, onClose, props }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
     const [windowPosition, setWindowPosition] = useState({ x: 100, y: 100 }); // Initial position
     const [isResizing, setIsResizing] = useState(false);
     const [resizeOffset, setResizeOffset] = useState({ x: 0, y: 0 });
     const [windowSize, setWindowSize] = useState({ width: 500, height: 300 }); // Initial size
+
+    const pageOpened = props;
+    console.log(pageOpened);
 
     const handleMouseDown = (e) => {
         const { clientX, clientY } = e;
@@ -49,14 +53,14 @@ const Window = ({ id, onClose }) => {
              style={{top: windowPosition.y, left: windowPosition.x, width: windowSize.width, height: windowSize.height}}
              onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
             <div className="window-toolbar" onMouseDown={handleMouseDown}>
-                <span>Window Title</span>
+                <span>{pageOpened}</span>
                 <div className="window-buttons">
                     <button className="window-button close" onClick={() => onClose(id)}></button>
                     <button className="window-button help"></button>
                 </div>
             </div>
             <div className="window-content">
-                <iframe src="https://wikipedia.com" title="Web Page" className="web-page-iframe"></iframe>
+                <Portfolio/>
             </div>
             <div className="window-resize-handle"></div>
         </div>
