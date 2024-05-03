@@ -40,6 +40,7 @@ const Desktop = () => {
     let currIDWindow = 0;
     // Handle double click on icon to open a window
     const handleIconDoubleClick = (iconName) => {
+        console.log("Clicked icon:", iconName);
         switch (iconName) {
             case "Portfolio":
                 setOpenedWindow("Portfolio");
@@ -147,90 +148,31 @@ const Desktop = () => {
         >
             {/* Desktop icons */}
             <div className="desktop-icons">
-                {/* My Computer */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'My Computer' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('My Computer', e)}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'My Computer')}
-                    style={{ left: iconPositions['My Computer'].x, top: iconPositions['My Computer'].y }}
-                >
-                    <img src={MyComputerIcon} alt="My Computer" title="My Computer" />
-                    <span>My Computer</span>
-                </div>
-                {/* Recycle Bin */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'Recycle Bin' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('Recycle Bin', e)}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'Recycle Bin')}
-                    style={{ left: iconPositions['Recycle Bin'].x, top: iconPositions['Recycle Bin'].y }}
-                >
-                    <img src={RecycleBinIcon} alt="Recycle Bin" title="Recycle Bin" />
-                    <span>Recycle Bin</span>
-                </div>
-                {/* My Documents */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'My Documents' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('My Documents', e)}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'My Documents')}
-                    style={{ left: iconPositions['My Documents'].x, top: iconPositions['My Documents'].y }}
-                >
-                    <img src={MyDocumentsIcon} alt="My Documents" title="My Documents" />
-                    <span>My Documents</span>
-                </div>
-                {/* Network Neighborhood */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'Network' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('Network', e)}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'Network')}
-                    style={{ left: iconPositions['Network'].x, top: iconPositions['Network'].y }}
-                >
-                    <img src={NetworkIcon} alt="Network" title="Network" />
-                    <span>Network</span>
-                </div>
-                {/* Portofolio */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'Portfolio' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('Portfolio', e)}
-                    onDoubleClick={() => handleIconDoubleClick("Portfolio")}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'Portfolio')}
-                    style={{ left: iconPositions['Portfolio'].x, top: iconPositions['Portfolio'].y }}
-                >
-                    <img src={PortfolioIcon} alt="Portofolio" title="Portofolio" />
-                    <span>Portofolio</span>
-                </div>
-                {/* Blog */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'Blog' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('Blog', e)}
-                    onDoubleClick={() => handleIconDoubleClick("Blog")}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'Blog')}
-                    style={{ left: iconPositions['Blog'].x, top: iconPositions['Blog'].y }}
-                >
-                    <img src={BlogIcon} alt="Blog" title="Blog" />
-                    <span>Blog</span>
-                </div>
-                {/* Contact */}
-                <div
-                    className={`desktop-icon ${selectedIcon === 'Contact' ? 'selected' : ''}`}
-                    onClick={(e) => handleIconClick('Contact', e)}
-                    onDoubleClick={() => handleIconDoubleClick("Contact")}
-                    draggable={true}
-                    onDragStart={(e) => handleIconDragStart(e, 'Contact')}
-                    style={{ left: iconPositions['Contact'].x, top: iconPositions['Contact'].y }}
-                >
-                    <img src={ContactIcon} alt="Contact" title="Contact" />
-                    <span>Contact</span>
-                </div>
+                {Object.entries(iconPositions).map(([iconName, position]) => (
+                    <div
+                        key={iconName}
+                        className={`desktop-icon ${selectedIcon === iconName ? 'selected' : ''}`}
+                        onClick={(e) => handleIconClick(iconName, e)} // Select icon on click
+                        draggable={true}
+                        onDragStart={(e) => handleIconDragStart(e, iconName)}
+                        onDoubleClick={() => handleIconDoubleClick(iconName)}
+                        style={{left: position.x, top: position.y}}
+                    >
+                        {/* Use dynamic import for icon based on iconName */}
+                        {iconName === 'My Computer' && <img src={MyComputerIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Recycle Bin' && <img src={RecycleBinIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'My Documents' && <img src={MyDocumentsIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Network' && <img src={NetworkIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Portfolio' && <img src={PortfolioIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Blog' && <img src={BlogIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Contact' && <img src={ContactIcon} alt={iconName} title={iconName}/>}
+                        <span>{iconName}</span>
+                    </div>
+                ))}
             </div>
             {/* Render windows */}
             {windows.map(window => (
-                <Window id={window.id} onClose={closeWindow} props = {openedWindow} />
+                <Window id={window.id} onClose={closeWindow} props={openedWindow}/>
             ))}
         </div>
     );
