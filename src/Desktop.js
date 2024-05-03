@@ -10,6 +10,9 @@ import NetworkIcon from './images/network_cool_two_pcs-0.png';
 import PortfolioIcon from './images/computer_explorer-5.png'; // Update with actual path
 import BlogIcon from './images/outlook_express-0.png';
 import ContactIcon from './images/msie2-2.png';
+import Portfolio from "./Portfolio/Portfolio";
+import Blog from "./Blog/Blog";
+import Contact from "./Contact/Contact";
 
 const Desktop = () => {
     // Define gridSize in pixels (e.g., 50px)
@@ -37,27 +40,22 @@ const Desktop = () => {
         setSelectedIcon(prevIcon => prevIcon === iconName ? null : iconName);
     };
 
-    let currIDWindow = 0;
-    // Handle double click on icon to open a window
     const handleIconDoubleClick = (iconName) => {
         console.log("Clicked icon:", iconName);
         switch (iconName) {
             case "Portfolio":
-                setOpenedWindow("Portfolio");
+                openWindow(iconName);
                 break;
             case "Blog":
-                setOpenedWindow("Blog");
+                openWindow(iconName);
                 break;
             case "Contact":
-                setOpenedWindow("Contact");
+                openWindow(iconName);
                 break;
             default:
                 break;
         }
-        openWindow(currIDWindow);
-        currIDWindow++;
     };
-
     // Handle click outside of icons to deselect the icon
     const handleOutsideClick = () => {
         setSelectedIcon(null);
@@ -172,7 +170,7 @@ const Desktop = () => {
             </div>
             {/* Render windows */}
             {windows.map(window => (
-                <Window id={window.id} onClose={closeWindow} props={openedWindow}/>
+                <Window key={window.id} id={window.id} onClose={closeWindow} props={window.content} />
             ))}
         </div>
     );

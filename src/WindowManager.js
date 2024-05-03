@@ -25,7 +25,4 @@ export const useWindows = () => {
     return { windows, openWindow, updateWindowContent, closeWindow };
 };
 
-
-
-
 export default useWindows;
