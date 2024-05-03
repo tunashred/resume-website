@@ -32,6 +32,7 @@
     top: 2px;
 
     /* Close and help button styles */
+
     .window-button {
         background: no-repeat center #ccc;
         border: 2px solid #7c7c7c;
@@ -43,11 +44,13 @@
         margin-left: 2px;
 
         /* Close button style */
+
         &.close {
             background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
         }
 
         /* Help button style */
+
         &.help {
             background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
         }
@@ -84,15 +87,19 @@
     background-color: transparent;
 }
 
-/* Resize handle styles */
-.window-resize-handle {
+.icon-handler {
     position: absolute;
     width: 10px;
     height: 10px;
     bottom: 0;
     right: 0;
     cursor: se-resize;
-    background-color: #000;
+    visibility: hidden;
+}
+
+.bottom-right {
+    bottom: 0;
+    right: 0;
 }
 
 /* Iframe styles */

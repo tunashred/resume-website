@@ -63,7 +63,8 @@ const Window = ({ id, onClose, pageOpened }) => {
                 {pageOpened === "Blog" && <Blog />}
                 {pageOpened === "Contact" && <Contact />}
             </div>
-            <div className="window-resize-handle"></div>
+            {/* Invisible icon handlers */}
+            <div className="icon-handler bottom-right" onMouseDown={handleMouseDown}></div>
         </div>
     );
 };
