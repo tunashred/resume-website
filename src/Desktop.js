@@ -37,24 +37,24 @@ const Desktop = () => {
         setSelectedIcon(prevIcon => prevIcon === iconName ? null : iconName);
     };
 
+    let currIDWindow = 0;
     // Handle double click on icon to open a window
     const handleIconDoubleClick = (iconName) => {
         switch (iconName) {
             case "Portfolio":
                 setOpenedWindow("Portfolio");
-                openWindow("PortfolioWindow");
                 break;
             case "Blog":
                 setOpenedWindow("Blog");
-                openWindow("BlogWindow");
                 break;
             case "Contact":
                 setOpenedWindow("Contact");
-                openWindow("ContactWindow");
                 break;
             default:
                 break;
         }
+        openWindow(currIDWindow);
+        currIDWindow++;
     };
 
     // Handle click outside of icons to deselect the icon
