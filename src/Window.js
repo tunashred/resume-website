@@ -4,16 +4,13 @@ import Portfolio from "./Portfolio/Portfolio";
 import Blog from "./Blog/Blog";
 import Contact from "./Contact/Contact";
 
-const Window = ({ id, onClose, props }) => {
+const Window = ({ id, onClose, pageOpened }) => {
     const [isDragging, setIsDragging] = useState(false);
     const [dragOffset, setDragOffset] = useState({ x: 0, y: 0 });
     const [windowPosition, setWindowPosition] = useState({ x: 100, y: 100 }); // Initial position
     const [isResizing, setIsResizing] = useState(false);
     const [resizeOffset, setResizeOffset] = useState({ x: 0, y: 0 });
     const [windowSize, setWindowSize] = useState({ width: 500, height: 300 }); // Initial size
-
-    const pageOpened = props;
-    console.log(pageOpened);
 
     const handleMouseDown = (e) => {
         const { clientX, clientY } = e;

@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 
-// Simple window state management
 export const useWindows = () => {
     const [windows, setWindows] = useState([]);
     const [windowCounter, setWindowCounter] = useState(0); // Counter for generating unique IDs

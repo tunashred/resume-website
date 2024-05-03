@@ -5,7 +5,6 @@ const Portfolio = () => {
     return (
         <div className="portfolio-container">
             <div className="project-list">
-                {/* Project: Sierpinsky */}
                 <div className="project">
                     <h3>Sierpinsky</h3>
                     <p>
@@ -13,7 +12,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/jucarioare-in-C/tree/main/sierpinsky">GitHub Repository</a>
                 </div>
-                {/* Project: Mandelbrot */}
                 <div className="project">
                     <h3>Mandelbrot</h3>
                     <p>
@@ -21,7 +19,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/jucarioare-in-C/tree/main/mandelbrot">GitHub Repository</a>
                 </div>
-                {/* Project: Directory Content Copier */}
                 <div className="project">
                     <h3>Directory Content Copier</h3>
                     <p>
@@ -29,7 +26,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/jucarioare-in-C/tree/main/directory_content_copier">GitHub Repository</a>
                 </div>
-                {/* Project: Data Structures (excluding hashtable-fancy) */}
                 <div className="project">
                     <h3>Data Structures</h3>
                     <p>
@@ -37,7 +33,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/data-structures">GitHub Repository</a>
                 </div>
-                {/* Project: Hashtable Fancy */}
                 <div className="project">
                     <h3>Hashtable Fancy</h3>
                     <p>
@@ -45,7 +40,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/data-structures/tree/master/hashtable-fancy">GitHub Repository</a>
                 </div>
-                {/* Project: Makefile Template */}
                 <div className="project">
                     <h3>Makefile Template</h3>
                     <p>
@@ -53,7 +47,6 @@ const Portfolio = () => {
                     </p>
                     <a href="https://github.com/tunashred/makefile-template">GitHub Repository</a>
                 </div>
-                {/* Project: Supervised Learning */}
                 <div className="project">
                     <h3>Supervised Learning</h3>
                     <p>
