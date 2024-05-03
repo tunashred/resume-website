@@ -7,8 +7,8 @@ import Window from './Window';
 function App() {
     return (
         <div className="App">
-            <Desktop />
-            <Toolbar />
+            <Desktop/>
+            <Toolbar/>
         </div>
     );
 }

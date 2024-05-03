@@ -1,7 +1,7 @@
 import {useState} from "react";
 import './Desktop.css';
 import Window from "./Window";
-import { useWindows } from './WindowManager';
+import {useWindows} from './WindowManager';
 
 import MyComputerIcon from './images/computer_explorer-5.png';
 import RecycleBinIcon from './images/recycle_bin_empty-4.png';
@@ -18,16 +18,16 @@ const Desktop = () => {
     const gridSize = 80;
     const [selectedIcon, setSelectedIcon] = useState(null);
     const [iconPositions, setIconPositions] = useState({
-        'My Computer': { x: 0, y: 0 },
-        'Recycle Bin': { x: 5, y: 80 },
-        'My Documents': { x: -5, y: 160 },
-        'Network': { x: 0, y: 240 },
-        'Portfolio': { x: 690, y: 0 },
-        'Blog': { x: 770, y: 0 },
-        'Contact': { x: 1830, y: 690 }
+        'My Computer': {x: 0, y: 0},
+        'Recycle Bin': {x: 5, y: 80},
+        'My Documents': {x: -5, y: 160},
+        'Network': {x: 0, y: 240},
+        'Portfolio': {x: 690, y: 0},
+        'Blog': {x: 770, y: 0},
+        'Contact': {x: 1830, y: 690}
     });
 
-    const { windows, openWindow, closeWindow } = useWindows();
+    const {windows, openWindow, closeWindow} = useWindows();
 
     const handleIconClick = (iconName, e) => {
         e.stopPropagation(); // Stop propagation to prevent deselection
@@ -64,7 +64,7 @@ const Desktop = () => {
     const handleIconDrop = (e) => {
         e.preventDefault();
         const iconName = e.dataTransfer.getData('iconName');
-        const { clientX, clientY } = e;
+        const {clientX, clientY} = e;
         const desktopRect = e.target.getBoundingClientRect();
 
         // Calculate the grid position based on the cursor position
@@ -79,17 +79,17 @@ const Desktop = () => {
         });
 
         if (collisionDetected) {
-            let nearestPosition = { x: gridX, y: gridY };
+            let nearestPosition = {x: gridX, y: gridY};
             let minDistance = Number.MAX_SAFE_INTEGER;
             const possiblePositions = [
-                { x: gridX - gridSize, y: gridY - gridSize },
-                { x: gridX, y: gridY - gridSize },
-                { x: gridX + gridSize, y: gridY - gridSize },
-                { x: gridX - gridSize, y: gridY },
-                { x: gridX + gridSize, y: gridY },
-                { x: gridX - gridSize, y: gridY + gridSize },
-                { x: gridX, y: gridY + gridSize },
-                { x: gridX + gridSize, y: gridY + gridSize }
+                {x: gridX - gridSize, y: gridY - gridSize},
+                {x: gridX, y: gridY - gridSize},
+                {x: gridX + gridSize, y: gridY - gridSize},
+                {x: gridX - gridSize, y: gridY},
+                {x: gridX + gridSize, y: gridY},
+                {x: gridX - gridSize, y: gridY + gridSize},
+                {x: gridX, y: gridY + gridSize},
+                {x: gridX + gridSize, y: gridY + gridSize}
             ];
 
             possiblePositions.forEach((position) => {
@@ -111,13 +111,13 @@ const Desktop = () => {
             // Update the icon position to the nearest available position
             setIconPositions(prevPositions => ({
                 ...prevPositions,
-                [iconName]: { x: nearestPosition.x, y: nearestPosition.y }
+                [iconName]: {x: nearestPosition.x, y: nearestPosition.y}
             }));
         } else {
             // No collision, update the icon position
             setIconPositions(prevPositions => ({
                 ...prevPositions,
-                [iconName]: { x: gridX, y: gridY }
+                [iconName]: {x: gridX, y: gridY}
             }));
         }
     };
@@ -158,7 +158,7 @@ const Desktop = () => {
                 ))}
             </div>
             {windows.map(window => (
-                <Window key={window.id} id={window.id} onClose={closeWindow} pageOpened={window.content} />
+                <Window key={window.id} id={window.id} onClose={closeWindow} pageOpened={window.content}/>
             ))}
         </div>
     );
