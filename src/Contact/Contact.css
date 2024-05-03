@@ -1,6 +1,65 @@
 .contact-container {
+    max-width: 600px;
+    margin: 0 auto;
     padding: 20px;
     background-color: #f0f0f0;
-    border: 1px solid #ccc;
+    border: 2px solid #808080;
+    border-radius: 10px;
+}
+
+.contact-container h2 {
+    text-align: center;
+}
+
+.contact-container p {
+    margin-bottom: 20px;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="file"],
+.form-group textarea {
+    width: 100%;
+    padding: 8px;
+    font-size: 16px;
+    border: 1px solid #808080;
     border-radius: 5px;
+}
+
+.checkbox-group label {
+    display: block;
+    font-weight: normal;
+}
+
+.button-retro {
+    font-size: 15px;
+    padding: 10px 20px;
+    background: #c0c0c0;
+    color: #000;
+    border: 2px outset #808080;
+    border-radius: 5px;
+    outline: none;
+    cursor: pointer;
+}
+
+.button-retro:hover {
+    background: #d0d0d0;
+}
+
+.button-retro:active {
+    border: 2px inset #808080;
+}
+
+.checkbox-group input[type="checkbox"] {
+    margin-right: 5px;
 }
