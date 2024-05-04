@@ -1,4 +1,3 @@
-// App.js
 import React from 'react';
 import Desktop from './Desktop';
 import Toolbar from './Toolbar';
