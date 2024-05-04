@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import BlogPost from "./BlogPost";
 import './Blog.css'
+import {LeftAsciiArt, RightAsciiArt} from "./AsciiArt";
 
 const Blog = () => {
     const [selectedPost, setSelectedPost] = useState(null);
@@ -78,42 +79,7 @@ const Blog = () => {
         setSelectedPost(null);
     };
 
-    // ASCII art strings
-    const LeftAsciiArt =
-    "                              \\\\\\\\\\\\\\\n" +
-        "                            \\\\\\\\\\\\\\\\\\\\\\\\\n" +
-        "                          \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n" +
-        "  -----------,-|           |C>   // )\\\\\\\\|\n" +
-        "           ,','|          /    || ,'/////|\n" +
-        "---------,','  |         (,    ||   /////\n" +
-        "         ||    |          \\\\  ||||//''''|\n" +
-        "         ||    |           |||||||     _|\n" +
-        "         ||    |______      `````\\____/ \\\n" +
-        "         ||    |     ,|         _/_____/ \\\n" +
-        "         ||  ,'    ,' |        /          |\n" +
-        "         ||,'    ,'   |       |         \\  |\n" +
-        "_________|/    ,'     |      /           | |\n" +
-        "_____________,'      ,',_____|      |    | |\n" +
-        "             |     ,','      |      |    | |\n" +
-        "             |   ,','    ____|_____/    /  |\n" +
-        "             | ,','  __/ |             /   |\n" +
-        "_____________|','   ///_/-------------/   |\n" +
-        "              |===========,'";
 
-    const RightAsciiArt =
-    "   ._________________.\n" +
-        "   |.---------------.|\n" +
-        "   ||               ||\n" +
-        "   ||   -._ .-.     ||\n" +
-        "   ||   -._| | |    ||\n" +
-        "   ||   -._|\"|\"|    ||\n" +
-        "   ||   -._|.-.|    ||\n" +
-        "   ||_______________||\n" +
-        "   /.-.-.-.-.-.-.-.-.\\\n" +
-        "  /.-.-.-.-.-.-.-.-.-.\\\n" +
-        " /.-.-.-.-.-.-.-.-.-.-.\\\n" +
-        "/______/__________\\___o_\\ DrS\n" +
-        "\\_______________________/";
 
     return (
         <div className="scroll-container">
@@ -123,7 +89,7 @@ const Blog = () => {
                 </div>
 
                 <div className="middlepanel">
-                    <h1>Welcome to My Retro Blog!</h1>
+                    <h1>Welcome To My Retro Blog!<br/><br/></h1>
                     {selectedPostId ? (
                         <BlogPost postId={selectedPostId} goBack={() => setSelectedPostId(null)}/>
                     ) : (
