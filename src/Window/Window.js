@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import Portfolio from "./Portfolio/Portfolio";
-import Blog from "./Blog/Blog";
-import Contact from "./Contact/Contact";
+import Portfolio from "../Portfolio/Portfolio";
+import Blog from "../Blog/Blog";
+import Contact from "../Contact/Contact";
 import './Window.css';
 
 const Window = ({ id, onClose, pageOpened }) => {
@@ -10,7 +10,7 @@ const Window = ({ id, onClose, pageOpened }) => {
         Contact: { position: { x: 1340, y: 50 }, size: { width: 430, height: 620 } },
         Blog: { position: { x: 130, y: 140 }, size: { width: 1160, height: 780 } }
     };
-    // Initialize window size and position based on the pageOpened
+
     const initialSize = initialSettings[pageOpened]?.size || { width: 500, height: 300 };
     const initialPosition = initialSettings[pageOpened]?.position || { x: 100, y: 100 };
     const [windowSize, setWindowSize] = useState(initialSize);

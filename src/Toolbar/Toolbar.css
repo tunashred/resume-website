@@ -16,7 +16,7 @@
 }
 
 .start-button {
-    background: url(images/windows-0.png) no-repeat 2px center / 24px;
+    background: url(../images/windows-0.png) no-repeat 2px center / 24px;
     padding-left: 28px;
     padding-right: 5px;
     height: 29px;
@@ -25,24 +25,24 @@
     border: 2px solid #7c7c7c;
     border-top-color: #fff;
     border-left-color: #fff;
-    cursor: pointer; /* Add cursor pointer */
+    cursor: pointer;
 }
 
 .start-menu-wrapper {
     position: absolute;
-    top: calc(100% + 2px); /* Adjust the top position to place the Start Menu below the toolbar */
+    top: calc(100% + 2px);
     left: 0;
     background-color: #c0c0c0;
     border: 1px solid #000;
     padding: 10px;
     z-index: 999;
-    display: none; /* Initially hidden */
+    display: none;
 }
 
 .start-menu-title {
     display: block;
-    background-color: #000080; /* Windows 98 title bar color */
-    background-image: url("images/windows_98_remastered_startup_screen__4k_wallpaper_by_archi_techi_daobodr-pre.jpg"); /* Windows 98 title bar background image */
+    background-color: #000080;
+    background-image: url("../images/windows_98_remastered_startup_screen__4k_wallpaper_by_archi_techi_daobodr-pre.jpg");
     background-repeat: no-repeat;
     background-position: bottom left;
     color: white; /* Title bar text color */

@@ -17,7 +17,7 @@
     position: absolute;
     display: flex;
     flex-direction: column;
-    align-items: center; /* Align both icon and text to the center */
+    align-items: center;
     justify-content: center;
     color: #fff;
     text-align: center;
@@ -25,18 +25,18 @@
 }
 
 .desktop-icon.selected {
-    background-color: #0080FF; /* Blue background color */
-    color: #FFFFFF; /* White text color */
+    background-color: #0080FF;
+    color: #FFFFFF;
 }
 
 .desktop-icon img {
-    width: 50px; /* Adjust icon size */
-    height: 50px; /* Adjust icon size */
+    width: 50px;
+    height: 50px;
 }
 
 .desktop-icon span {
-    margin-top: 5px; /* Add space between icon and text */
-    font-size: 12px; /* Adjust font size */
-    word-wrap: break-word; /* Allow long text to wrap onto multiple lines */
-    line-height: 1.2; /* Set the line height */
+    margin-top: 5px;
+    font-size: 12px;
+    word-wrap: break-word;
+    line-height: 1.2;
 }

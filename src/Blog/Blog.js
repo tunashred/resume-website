@@ -79,8 +79,6 @@ const Blog = () => {
         setSelectedPost(null);
     };
 
-
-
     return (
         <div className="scroll-container">
             <div className="blog-container d-flex">
@@ -110,8 +108,6 @@ const Blog = () => {
         </div>
 
     );
-
-
 };
 
 export default Blog;

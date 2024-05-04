@@ -1,7 +1,6 @@
 import React from 'react';
-import Desktop from './Desktop';
-import Toolbar from './Toolbar';
-import Window from './Window';
+import Desktop from './Desktop/Desktop';
+import Toolbar from './Toolbar/Toolbar';
 
 function App() {
     return (

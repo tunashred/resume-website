@@ -1,5 +1,5 @@
 // Toolbar.js
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 import './Toolbar.css';
 
 const Toolbar = () => {
@@ -12,7 +12,6 @@ const Toolbar = () => {
 
     return (
         <div id="toolbar">
-            {/* Toolbar content */}
             <div className="toolbar-start-menu">
                 <button className="start-button" onClick={toggleStartMenu}>
                     Start
@@ -60,7 +59,8 @@ const Toolbar = () => {
 
             <div className="toolbar-right">
                 <div className="time"><span className="hour"></span>:
-                    <span className="minutes"></span> AM</div>
+                    <span className="minutes"></span> AM
+                </div>
             </div>
         </div>
     );

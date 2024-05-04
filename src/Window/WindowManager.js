@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, {useState} from 'react';
 
 export const useWindows = () => {
     const [windows, setWindows] = useState([]);
@@ -6,9 +6,9 @@ export const useWindows = () => {
 
     const openWindow = (content) => {
         const id = `window-${windowCounter}`; // Generate unique ID
-        setWindows(prev => [...prev, { id, isOpen: true, content }]); // Include content in window object
+        setWindows(prev => [...prev, {id, isOpen: true, content}]); // Include content in window object
         setWindowCounter(prev => prev + 1); // Increment counter
-        return id; // Return the generated ID
+        return id;
     };
 
     const closeWindow = (id) => {
@@ -17,11 +17,10 @@ export const useWindows = () => {
 
     const updateWindowContent = (id, newContent) => {
         setWindows(prev =>
-            prev.map(window => (window.id === id ? { ...window, content: newContent } : window))
+            prev.map(window => (window.id === id ? {...window, content: newContent} : window))
         );
     };
-
-    return { windows, openWindow, updateWindowContent, closeWindow };
+    return {windows, openWindow, updateWindowContent, closeWindow};
 };
 
 export default useWindows;

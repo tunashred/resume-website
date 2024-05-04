@@ -1,18 +1,18 @@
 import {useState} from "react";
 import './Desktop.css';
-import Window from "./Window";
-import {useWindows} from './WindowManager';
+import Window from "../Window/Window";
+import {useWindows} from '../Window/WindowManager';
 
-import MyComputerIcon from './images/computer_explorer-5.png';
-import RecycleBinIcon from './images/recycle_bin_empty-4.png';
-import MyDocumentsIcon from './images/directory_open_file_mydocs-4.png';
-import NetworkIcon from './images/network_cool_two_pcs-0.png';
-import PortfolioIcon from './images/computer_explorer-5.png';
-import BlogIcon from './images/outlook_express-0.png';
-import ContactIcon from './images/msie2-2.png';
-import Portfolio from "./Portfolio/Portfolio";
-import Blog from "./Blog/Blog";
-import Contact from "./Contact/Contact";
+import MyComputerIcon from '../images/computer_explorer-5.png';
+import RecycleBinIcon from '../images/recycle_bin_empty-4.png';
+import MyDocumentsIcon from '../images/directory_open_file_mydocs-4.png';
+import NetworkIcon from '../images/network_cool_two_pcs-0.png';
+import PortfolioIcon from '../images/computer_explorer-5.png';
+import BlogIcon from '../images/outlook_express-0.png';
+import ContactIcon from '../images/msie2-2.png';
+import Portfolio from "../Portfolio/Portfolio";
+import Blog from "../Blog/Blog";
+import Contact from "../Contact/Contact";
 
 const Desktop = () => {
     const gridSize = 80;

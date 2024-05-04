@@ -1,4 +1,3 @@
-/* Styles for the window */
 :root {
     --button-face: #dfdfdf;
 }
@@ -8,8 +7,8 @@
     border-right-color: #7c7c7c;
     border-bottom-color: #131313;
     background: #c0c0c0;
-    width: 500px; /* Set an initial width */
-    height: 300px; /* Set an initial height */
+    width: 500px;
+    height: 300px;
     position: fixed;
     top: 25%;
     left: 25%;
@@ -31,8 +30,6 @@
     right: 2px;
     top: 2px;
 
-    /* Close and help button styles */
-
     .window-button {
         background: no-repeat center #ccc;
         border: 2px solid #7c7c7c;
@@ -43,13 +40,9 @@
         float: right;
         margin-left: 2px;
 
-        /* Close button style */
-
         &.close {
             background-image: url(https://win98icons.alexmeub.com/images/close-icon.png);
         }
-
-        /* Help button style */
 
         &.help {
             background-image: url(https://win98icons.alexmeub.com/images/question-icon.png);
@@ -57,7 +50,6 @@
     }
 }
 
-/* Window content styles */
 .window-content {
     position: absolute;
     top: 30px; /* Offset content by the toolbar height */
