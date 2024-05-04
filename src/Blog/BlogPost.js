@@ -1,5 +1,4 @@
 import React from "react";
-import Window from "../Window";
 
 const BlogPost = ({postId, goBack}) => {
 

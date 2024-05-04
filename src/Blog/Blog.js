@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import Window from "../Window";
 import BlogPost from "./BlogPost";
+import './Blog.css'
 
 const Blog = () => {
     const [selectedPost, setSelectedPost] = useState(null);
@@ -78,22 +78,74 @@ const Blog = () => {
         setSelectedPost(null);
     };
 
+    // ASCII art strings
+    const LeftAsciiArt =
+    "                              \\\\\\\\\\\\\\\n" +
+        "                            \\\\\\\\\\\\\\\\\\\\\\\\\n" +
+        "                          \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\n" +
+        "  -----------,-|           |C>   // )\\\\\\\\|\n" +
+        "           ,','|          /    || ,'/////|\n" +
+        "---------,','  |         (,    ||   /////\n" +
+        "         ||    |          \\\\  ||||//''''|\n" +
+        "         ||    |           |||||||     _|\n" +
+        "         ||    |______      `````\\____/ \\\n" +
+        "         ||    |     ,|         _/_____/ \\\n" +
+        "         ||  ,'    ,' |        /          |\n" +
+        "         ||,'    ,'   |       |         \\  |\n" +
+        "_________|/    ,'     |      /           | |\n" +
+        "_____________,'      ,',_____|      |    | |\n" +
+        "             |     ,','      |      |    | |\n" +
+        "             |   ,','    ____|_____/    /  |\n" +
+        "             | ,','  __/ |             /   |\n" +
+        "_____________|','   ///_/-------------/   |\n" +
+        "              |===========,'";
+
+    const RightAsciiArt =
+    "   ._________________.\n" +
+        "   |.---------------.|\n" +
+        "   ||               ||\n" +
+        "   ||   -._ .-.     ||\n" +
+        "   ||   -._| | |    ||\n" +
+        "   ||   -._|\"|\"|    ||\n" +
+        "   ||   -._|.-.|    ||\n" +
+        "   ||_______________||\n" +
+        "   /.-.-.-.-.-.-.-.-.\\\n" +
+        "  /.-.-.-.-.-.-.-.-.-.\\\n" +
+        " /.-.-.-.-.-.-.-.-.-.-.\\\n" +
+        "/______/__________\\___o_\\ DrS\n" +
+        "\\_______________________/";
+
     return (
-        <div className="blog-container">
-            <h1>Welcome to My Retro Blog!</h1>
-            {selectedPostId ? (
-                <BlogPost postId={selectedPostId} goBack={() => setSelectedPostId(null)} />
-            ) : (
-                blogPosts.map(post => (
-                    <div className="blog-post-preview" key={post.id}>
-                        <h2>{post.title}</h2>
-                        <p>{post.preview}</p>
-                        <button onClick={() => handleReadMore(post.id)}>Read more</button>
-                    </div>
-                ))
-            )}
+        <div className="scroll-container">
+            <div className="blog-container d-flex">
+                <div className="leftpanel">
+                    <pre className="ascii-art">{LeftAsciiArt}</pre>
+                </div>
+
+                <div className="middlepanel">
+                    <h1>Welcome to My Retro Blog!</h1>
+                    {selectedPostId ? (
+                        <BlogPost postId={selectedPostId} goBack={() => setSelectedPostId(null)}/>
+                    ) : (
+                        blogPosts.map(post => (
+                            <div className="blog-post-preview" key={post.id}>
+                                <h2>{post.title}</h2>
+                                <p>{post.preview}</p>
+                                <button onClick={() => handleReadMore(post.id)}>Read more</button>
+                            </div>
+                        ))
+                    )}
+                </div>
+
+                <div className="rightpanel">
+                    <pre className="ascii-art">{RightAsciiArt}</pre>
+                </div>
+            </div>
         </div>
+
     );
+
+
 };
 
 export default Blog;
