@@ -6,6 +6,7 @@ import Contact from "../Contact/Contact";
 import HelpPopup from "./HelpPopup";
 
 import './Window.css';
+import Settings from "../Settings";
 
 const Window = ({id, onClose, pageOpened}) => {
     const initialSettings = {
@@ -135,6 +136,7 @@ const Window = ({id, onClose, pageOpened}) => {
                 {pageOpened === "Portfolio" && <Portfolio/>}
                 {pageOpened === "Blog" && <Blog/>}
                 {pageOpened === "Contact" && <Contact/>}
+                {pageOpened === "Settings" && <Settings/>}
             </div>
             {/* Invisible icon handlers */}
             <div className="icon-handler bottom-right" onMouseDown={handleMouseDown}></div>

@@ -10,6 +10,8 @@ import NetworkIcon from '../images/network_cool_two_pcs-0.png';
 import PortfolioIcon from '../images/computer_explorer-5.png';
 import BlogIcon from '../images/outlook_express-0.png';
 import ContactIcon from '../images/msie2-2.png';
+import SettingsIcon from '../images/settings_gear-0.png';
+
 import Portfolio from "../Portfolio/Portfolio";
 import Blog from "../Blog/Blog";
 import Contact from "../Contact/Contact";
@@ -24,7 +26,8 @@ const Desktop = () => {
         'Network': {x: 0, y: 240},
         'Portfolio': {x: 690, y: 0},
         'Blog': {x: 770, y: 0},
-        'Contact': {x: 1830, y: 690}
+        'Contact': {x: 1830, y: 690},
+        'Settings': { x: 100, y: 500 } // Position for the Settings icon
     });
 
     const {windows, openWindow, closeWindow} = useWindows();
@@ -39,12 +42,9 @@ const Desktop = () => {
         console.log("Clicked icon:", iconName);
         switch (iconName) {
             case "Portfolio":
-                openWindow(iconName);
-                break;
             case "Blog":
-                openWindow(iconName);
-                break;
             case "Contact":
+            case "Settings": // Open Settings window on double click
                 openWindow(iconName);
                 break;
             default:
@@ -153,6 +153,7 @@ const Desktop = () => {
                         {iconName === 'Portfolio' && <img src={PortfolioIcon} alt={iconName} title={iconName}/>}
                         {iconName === 'Blog' && <img src={BlogIcon} alt={iconName} title={iconName}/>}
                         {iconName === 'Contact' && <img src={ContactIcon} alt={iconName} title={iconName}/>}
+                        {iconName === 'Settings' && <img src={SettingsIcon} alt={iconName} title={iconName} />} {/* Render the Settings icon */}
                         <span>{iconName}</span>
                     </div>
                 ))}
