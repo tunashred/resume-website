@@ -2,19 +2,13 @@ import React from 'react';
 
 const Settings = ({ selectedFont, setSelectedFont, selectedTheme, setSelectedTheme }) => {
     const handleFontChange = (e) => {
-        setSelectedFont(e.target.value);
+        const font = e.target.value;
+        setSelectedFont(font); // Call setSelectedFont function with the new font value
     };
 
     const handleThemeChange = (e) => {
-        setSelectedTheme(e.target.value);
-    };
-
-    const setTheme = (theme) => {
-        setSelectedTheme(theme);
-    };
-
-    const setFont = (font) => {
-        setSelectedFont(font);
+        const theme = e.target.value;
+        setSelectedTheme(theme); // Call setSelectedTheme function with the new theme value
     };
 
     return (

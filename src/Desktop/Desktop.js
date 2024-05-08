@@ -16,7 +16,7 @@ import Portfolio from "../Portfolio/Portfolio";
 import Blog from "../Blog/Blog";
 import Contact from "../Contact/Contact";
 
-const Desktop = () => {
+const Desktop = ({selectedFont, setSelectedFont, selectedTheme, setSelectedTheme}) => {
     const gridSize = 80;
     const [selectedIcon, setSelectedIcon] = useState(null);
     const [iconPositions, setIconPositions] = useState({
@@ -27,7 +27,7 @@ const Desktop = () => {
         'Portfolio': {x: 690, y: 0},
         'Blog': {x: 770, y: 0},
         'Contact': {x: 1830, y: 690},
-        'Settings': { x: 100, y: 500 } // Position for the Settings icon
+        'Settings': {x: 100, y: 500} // Position for the Settings icon
     });
 
     const {windows, openWindow, closeWindow} = useWindows();
@@ -133,6 +133,7 @@ const Desktop = () => {
             onDrop={handleIconDrop}
             onDragOver={handleDragOver}
             onDoubleClick={handleOutsideClick}
+            style={ {fontFamily: selectedFont}}
         >
             {/* Desktop icons */}
             <div className="desktop-icons">
@@ -153,13 +154,18 @@ const Desktop = () => {
                         {iconName === 'Portfolio' && <img src={PortfolioIcon} alt={iconName} title={iconName}/>}
                         {iconName === 'Blog' && <img src={BlogIcon} alt={iconName} title={iconName}/>}
                         {iconName === 'Contact' && <img src={ContactIcon} alt={iconName} title={iconName}/>}
-                        {iconName === 'Settings' && <img src={SettingsIcon} alt={iconName} title={iconName} />} {/* Render the Settings icon */}
+                        {iconName === 'Settings' &&
+                            <img src={SettingsIcon} alt={iconName} title={iconName}/>} {/* Render the Settings icon */}
                         <span>{iconName}</span>
                     </div>
                 ))}
             </div>
             {windows.map(window => (
-                <Window key={window.id} id={window.id} onClose={closeWindow} pageOpened={window.content}/>
+                <Window key={window.id} id={window.id} onClose={closeWindow} pageOpened={window.content}
+                        selectedFont={selectedFont}
+                        setSelectedFont={setSelectedFont}
+                        selectedTheme={selectedTheme}
+                        setSelectedTheme={setSelectedTheme}/>
             ))}
         </div>
     );

@@ -8,7 +8,7 @@ import HelpPopup from "./HelpPopup";
 import './Window.css';
 import Settings from "../Settings";
 
-const Window = ({id, onClose, pageOpened}) => {
+const Window = ({ selectedFont, setSelectedFont, selectedTheme, setSelectedTheme, id, onClose, pageOpened }) => {
     const initialSettings = {
         Portfolio: {position: {x: 100, y: 100}, size: {width: 1730, height: 810}},
         Contact: {position: {x: 1340, y: 50}, size: {width: 430, height: 620}},
@@ -62,7 +62,7 @@ const Window = ({id, onClose, pageOpened}) => {
 
     const [showHelp, setShowHelp] = useState(false);
     // Manually hardcoded starting position for the popup
-    const initialHelpPosition = { x: 0, y: 0 };
+    const initialHelpPosition = {x: 0, y: 0};
     const [helpPosition, setHelpPosition] = useState(initialHelpPosition);
 
     const helpButtonRef = useRef(null);
@@ -73,10 +73,10 @@ const Window = ({id, onClose, pageOpened}) => {
             // Calculate position relative to the button
             const popupX = buttonRect.left - 161;
             const popupY = buttonRect.bottom - 75;
-            return { x: popupX, y: popupY };
+            return {x: popupX, y: popupY};
         }
         // If button reference is not available, return default position
-        return { x: 0, y: 0 };
+        return {x: 0, y: 0};
     };
 
     useEffect(() => {
@@ -122,27 +122,36 @@ const Window = ({id, onClose, pageOpened}) => {
     }
 
     return (
-        <div className="window"
-             style={{top: windowPosition.y, left: windowPosition.x, width: windowSize.width, height: windowSize.height}}
-             onMouseMove={handleMouseMove} onMouseUp={handleMouseUp}>
-            <div className="window-toolbar" onMouseDown={handleMouseDown}>
-                <span>{pageOpened}</span>
-                <div className="window-buttons">
-                    <button className="window-button close" onClick={() => onClose(id)}></button>
-                    <button className="window-button help" onClick={toggleHelp} ref={helpButtonRef}></button>
+        <div style = { {fontFamily: selectedFont} } >
+            <div className="window"
+                 style={{top: windowPosition.y, left: windowPosition.x, width: windowSize.width, height: windowSize.height}}
+                 onMouseMove={handleMouseMove} onMouseUp={handleMouseUp} >
+                <div className="window-toolbar" onMouseDown={handleMouseDown}>
+                    <span>{pageOpened}</span>
+                    <div className="window-buttons">
+                        <button className="window-button close" onClick={() => onClose(id)}></button>
+                        <button className="window-button help" onClick={toggleHelp} ref={helpButtonRef}></button>
+                    </div>
                 </div>
-            </div>
-            <div className="window-content">
-                {pageOpened === "Portfolio" && <Portfolio/>}
-                {pageOpened === "Blog" && <Blog/>}
-                {pageOpened === "Contact" && <Contact/>}
-                {pageOpened === "Settings" && <Settings/>}
-            </div>
-            {/* Invisible icon handlers */}
-            <div className="icon-handler bottom-right" onMouseDown={handleMouseDown}></div>
+                <div className="window-content">
+                    {pageOpened === "Portfolio" && <Portfolio/>}
+                    {pageOpened === "Blog" && <Blog/>}
+                    {pageOpened === "Contact" && <Contact/>}
+                    {pageOpened === "Settings" && (
+                        <Settings
+                            selectedFont={selectedFont}
+                            setSelectedFont={setSelectedFont}
+                            selectedTheme={selectedTheme}
+                            setSelectedTheme={setSelectedTheme}
+                        />
+                    )}
+                </div>
+                {/* Invisible icon handlers */}
+                <div className="icon-handler bottom-right" onMouseDown={handleMouseDown}></div>
 
-            {/* Conditionally render the HelpPopup component */}
-            {showHelp && <HelpPopup message={helpMessage} onClose={closeHelp} position={helpPosition} />}
+                {/* Conditionally render the HelpPopup component */}
+                {showHelp && <HelpPopup message={helpMessage} onClose={closeHelp} position={helpPosition}/>}
+            </div>
         </div>
     );
 };
